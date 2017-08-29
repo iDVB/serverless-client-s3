@@ -55,7 +55,7 @@ class Client {
     this.serverless.cli.log('Validating Distribution Folder: "' + _dist + '"...');
 
     if (!Utils.dirExistsSync(path.join(this.serverless.config.servicePath, _dist))) {
-      return BbPromise.reject(new Error('Could not find "client/' + _dist + ' folder in your project root.'));
+      return BbPromise.reject(new Error('Could not find "' + _dist + '" folder in your project root.'));
     }
 
     if (!this.serverless.service.custom ||
@@ -65,7 +65,7 @@ class Client {
     }
 
     this.bucketName = this.serverless.service.custom.client.bucketName;
-    this.clientPath = path.join(this.serverless.config.servicePath, 'client', _dist);
+    this.clientPath = path.join(this.serverless.config.servicePath, _dist);
 
     return BbPromise.resolve();
   }
